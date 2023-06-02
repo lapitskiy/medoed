@@ -1,0 +1,108 @@
+{% extends "main.html" %}
+{% block content %}
+
+<script type=text/javascript>
+
+  $(function() {
+    $('a#exit_margin').bind('click', function() {
+      $.getJSON('/exit_margin',
+          {}, function(data) {
+          $("#result_margin").text(data.result);
+      });
+      return false;
+    });
+  });
+
+    $(function() {
+    $('a#delete_id').bind('click', function() {
+      $.getJSON('/delete_id',
+          {
+              delete_id: $(this).attr('href').substr(1)
+          }, function(data) {
+          $("#result_delete").text(data.result);
+      });
+      return false;
+    });
+  });
+</script>
+
+<hr><br>
+    <h1>Статистика торговли</h1>
+<a href="#" class="knopka" id="exit_margin">Выйти из позиции MARGIN принудительно</a><br><br><span id=result_margin></span><br>
+
+Зеленых: {{ green }}  | Сумма процентов {{ green_percent }}
+<br>
+Красных: {{ red }}  | Сумма процентов {{ red_percent }}
+<br><br>
+
+<div class="divTable">
+<div class="divTableBody">
+
+<div class="divTableCell">#</div>
+    <div class="divTableCell">Дата покупки</div>
+    <div class="divTableCell">Coin</div>
+    <div class="divTableCell">Интервал</div>
+    <div class="divTableCell">Счет при входе $</div>
+    <div class="divTableCell">Цена входа</div>
+    <div class="divTableCell">Цена выхода</div>
+    <div class="divTableCell">Счет при выходе $</div>
+    <div class="divTableCell">Процент движения %</div>
+
+
+{% for key, value in data.items() %}
+
+{% if value.result %}
+    <div class="divTableRow" style="background-color: #3A7734">
+
+{% else %}
+    <div class="divTableRow" style="background-color: red">
+
+{% endif %}
+        <div class="divTableCell">
+        {{key}}
+        </div>
+        {% for result in value.data %}
+        <div class="divTableCell">
+        {{result}}
+        </div>
+        {% endfor %}
+        <div class="divTableCell">
+            <a href="?{{value.data[0]}}&13" class="" id="delete_id"><img src="\static\x.png" alt="удалить"></a>
+        </div>
+
+
+</div>
+
+{% endfor %}
+</div>
+</div>
+
+{% endblock %}
+
+
+
+
+    {% for key, value in data.items() %}
+
+{% if value.result %}
+    <div class="divTableRow" style="background-color: #3A7734">
+
+{% else %}
+    <div class="divTableRow" style="background-color: red">
+
+{% endif %}
+        <div class="divTableCell">
+        {{key}}
+        </div>
+        {% for result in value.data %}
+        <div class="divTableCell">
+        {{result}}
+        </div>
+        {% endfor %}
+        <div class="divTableCell">
+            <a href="?{{value.data['timestamp']}}&14" class="" id="delete_id"><img src="\static\x.png" alt="удалить"></a>
+        </div>
+
+</div>
+
+{% endfor %}

@@ -1,0 +1,22 @@
+
+Время покупки (свеча пердыдущая): 2020-03-19 03:15:00
+stop price btc: 5360.75000000 ;
+
+
+###############
+След свеча
+before  2020-03-19 03:20:00 ; now:  2020-03-19 03:25:00
+###############
+
+След свеча
+before  2020-03-19 03:25:00 ; now:  2020-03-19 03:30:00
+###############
+
+NEW STOP! Ставим новый стоп под предыдущую свечу
+https://api.binance.com/api/v3/openOrders?symbol=BTCUSDT&timestamp=1584577803000&signature=beea48e89b93b59ce99e6c6e04b33821c9ddf697d85171503413f9e9d484d685 symbol=BTCUSDT&timestamp=1584577803000&signature=beea48e89b93b59ce99e6c6e04b33821c9ddf697d85171503413f9e9d484d685 {'url': 'api/v3/openOrders', 'method': 'GET', 'private': True}
+https://api.binance.com/api/v3/order orderId=1538225462&symbol=BTCUSDT&timestamp=1584577803000&signature=9735ccaf5f930bff632621617267b92b44149dffc6dfa6d994df864d0d65966d {'url': 'api/v3/order', 'method': 'DELETE', 'private': True}
+time before stop 2020-03-19 03:25:00 ; stop price: 5382.65000000 ; COIN_free: 0.00431600
+https://api.binance.com/api/v3/order symbol=BTCUSDT&recvWindow=5000&side=SELL&type=STOP_LOSS_LIMIT&quantity=0.004316&price=5382.65000000&stopPrice=5382.65000000&timeInForce=GTC&timestamp=1584577804000&signature=875278cb2eff76d15a6fc56dfed2f0114ca6c412bd2a3ec9fc3da9011ad45fe8 {'url': 'api/v3/order', 'method': 'POST', 'private': True}
+
+###################################################
+#########STOPLOSS!#STOPLOSS!STOPLOSS!##############

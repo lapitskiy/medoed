@@ -1,0 +1,198 @@
+{% extends "main.html" %}
+{% block content %}
+
+
+<script type=text/javascript>
+
+
+$(function() {
+    $('#upload-file-btn').click(function() {
+        var table = document.getElementById('table');
+
+        var form_data = new FormData($('#upload-file')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/ajax_upload',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                console.log('Success!');
+                $("#result").text(data.result);
+
+
+                var output='<ul>';
+                for(var key in data.json_dict) {
+                    output += '<li>' + key + ':' + data.json_dict[key] +'</li>';
+                    }
+                output+="</ul>";
+                document.getElementById("json").innerHTML=output;
+
+
+
+            },
+        });
+    });
+});
+
+
+$(function() {
+    $('#upload-file-btn').click(function() {
+        var table = document.getElementById('table');
+
+        var form_data = new FormData($('#upload-file')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/ajax_upload',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                console.log('Success!');
+                $("#result").text(data.result);
+
+
+                var output='<ul>';
+                for(var key in data.json_dict) {
+                    output += '<li>' + key + ':' + data.json_dict[key] +'</li>';
+                    }
+                output+="</ul>";
+                document.getElementById("json").innerHTML=output;
+
+
+
+            },
+        });
+    });
+});
+
+
+  $(function() {
+    $('a#cendel').bind('click', function() {
+      $.getJSON('/ajax_cendel',
+          {}, function(data) {
+          $("#result_cendel").text(data.result);
+      });
+      return false;
+    });
+  });
+
+
+  $(function() {
+    $('a#test_strategy').bind('click', function() {
+      $.getJSON('/ajax_get_binance',
+          {
+        period: $('input[name="period"]').val()
+      }, function(data) {
+
+        var output='<ul>';
+                for(var key in data.result) {
+
+                    output += '<li>' + key + ':';
+
+                    if(typeof data.result[key] === 'object') {
+                        for(var value in data.result[key]) {
+                            output+=value;
+                        }
+
+                    }
+
+
+                    output+='</li>';
+
+                    }
+                output+="</ul>";
+                document.getElementById("result_test_strategy").innerHTML=output;
+
+
+        var output='<ul>';
+                for(var key in data.beststg) {
+                    output += '<li>' + key + ':' + data.beststg[key] +'</li>';
+                    }
+                output+="</ul>";
+                document.getElementById("result_best_strategy").innerHTML=output;
+
+
+      });
+      return false;
+    });
+  });
+
+
+  $(function() {
+    $('a#config').bind('click', function() {
+      $.getJSON('/ajax_config',
+          {}, function(data) {
+          $("#result_config").text(data.result);
+      });
+      return false;
+    });
+  });
+</script>
+
+
+<br>
+<hr><br>
+    <h1>Проверить стратегии с binance данными</h1>
+      <p><b>Сколько дней проверять по стратегии</b>
+    <input type=text size=20 name=period value="31"><br>
+
+<br>
+<a href=# id=test_strategy>Запустить проверку (данные с api binance)</a><br><br>
+
+Результат: <br>
+
+<br>
+          Все стратегии:
+          <br><span id=result_test_strategy></span><br>
+          <br>
+
+<br>Лучшая стратегия:<br><span id=result_best_strategy></span><br>
+
+
+
+<hr><br>
+    <h1>Конфиг файл</h1>
+
+<br>
+<a href=# id=config>Создать конфиг файл по умолчанию</a><br><br>
+
+Результат: <br>
+
+<br><br><span id=result_config></span><br>
+
+
+<hr>
+<br>
+    <h1>Указать файл</h1>
+
+
+<form id="upload-file" method="post" enctype="multipart/form-data">
+    <p><b>Загрузите csv:</b></p><br>
+        <input name="file" type="file">
+        <button id="upload-file-btn" type="button">Upload</button>
+</form>
+<br>
+
+Результат: <br>
+
+<br><br><span id=result></span><br>
+
+
+<div id="json"></div>
+
+<br>
+<hr><br>
+    <h1>Проверить и обновить базу свечей</h1>
+
+<br>
+<a href=# id=cendel>Запустить проверку (данные с api binance)</a><br><br>
+
+Результат: <br>
+
+<br><br><span id=result_cendel></span><br>
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% block content %}
+
+<p><input list="character">
+   <datalist id="character">
+    <option value="Чебурашка"></option>
+    <option value="Крокодил Гена"></option>
+    <option value="Шапокляк"></option>
+   </datalist></p>
+
+<form name="CheckForm" method="POST" action="/result">
+  <div class="wrap">
+     <div class="search">
+        <input id="val" list="value" multiple="multiple" class="searchTerm" name="value" placeholder="Type your value">
+        <datalist id="value">
+          {% for val in values %}
+          <option value="{{val}}"></option>
+          {% endfor %}
+        </datalist>
+        <button type="submit" class="searchButton" name=form>
+          <i class="fa fa-search"></i>
+       </button>
+     </div>
+  </div>
+</form>
+
+{% endblock %}

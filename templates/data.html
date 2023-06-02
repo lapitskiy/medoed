@@ -1,0 +1,121 @@
+{% extends "main.html" %}
+{% block content %}
+
+<script type=text/javascript>
+
+  $(function() {
+    $('a#exit_simple').bind('click', function() {
+      $.getJSON('/exit_simple',
+          {
+          }, function(data) {
+          $("#result_simple").text(data.result);
+      });
+      return false;
+    });
+  });
+
+    $(function() {
+    $('a#delete_id').bind('click', function() {
+      $.getJSON('/delete_id',
+          {
+              delete_id: $(this).attr('href').substr(1)
+          }, function(data) {
+          $("#result_delete").text(data.result);
+      });
+      return false;
+    });
+  });
+
+</script>
+
+<hr><br>
+    <h1>Статистика торговли</h1>
+<a href="#" class="knopka" id="exit_simple">Выйти из позиции принудительно</a><br><br><span id=result_simple></span><br>
+Зеленых: {{ green }}  | Сумма процентов {{ green_percent }}
+<br>
+Красных: {{ red }}  | Сумма процентов {{ red_percent }}
+<br><br>
+<span id=result_delete></span>
+<br><br>
+
+<div class="divTable">
+<div class="divTableBody">
+
+    <div class="divTableCell">#</div>
+    <div class="divTableCell">Дата покупки</div>
+    <div class="divTableCell">Coin</div>
+    <div class="divTableCell">Интервал</div>
+    <div class="divTableCell">Стратегия входа</div>
+    <div class="divTableCell">Стратегия выхода</div>
+    <div class="divTableCell">Цена входа</div>
+    <div class="divTableCell">Цена выхода</div>
+    <div class="divTableCell">Счет при входе $</div>
+    <div class="divTableCell">Счет при выходе $</div>
+    <div class="divTableCell">Процент движения %</div>
+
+{% for key, value in data.items() %}
+
+{% if value['green'] %}
+    <div class="divTableRow" style="background-color: #3A7734">
+
+{% else %}
+    <div class="divTableRow" style="background-color: red">
+
+{% endif %}
+
+        <div class="divTableCell">
+        {{key}}
+        </div>
+
+        <div class="divTableCell">
+        {{value['timestamp']}}
+        </div>
+
+        <div class="divTableCell">
+        {{value['coin']}}
+        </div>
+
+        <div class="divTableCell">
+        {{value['interval']}}
+        </div>
+
+        <div class="divTableCell">
+        {{value['enterStg']}}
+        </div>
+
+        <div class="divTableCell">
+        {{value['exitStg']}}
+        </div>
+
+        <div class="divTableCell">
+        {{value['enterPrice']}}
+        </div>
+
+        <div class="divTableCell">
+        {{value['exitPrice']}}
+        </div>
+
+        <div class="divTableCell">
+        {{value['enterDeposit']}}
+        </div>
+
+        <div class="divTableCell">
+        {{value['exitDeposit']}}
+        </div>
+        <div class="divTableCell">
+        {{value['percentMove']}}
+        </div>
+
+        <div class="divTableCell">
+            <a href="?{{value['timestamp']}}&14" class="" id="delete_id"><img src="\static\x.png" alt="удалить"></a>
+        </div>
+</div>
+
+{% endfor %}
+
+
+
+</div>
+</div>
+
+{% endblock %}
