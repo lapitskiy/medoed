@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fdfbad1e-b5ac-4fab-a095-c462368d7ad1" name="Default Changelist" comment="" />
+    <list default="true" id="fdfbad1e-b5ac-4fab-a095-c462368d7ad1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -316,7 +319,7 @@
       <workItem from="1679962170556" duration="720000" />
       <workItem from="1680391091857" duration="1188000" />
       <workItem from="1685476331433" duration="4528000" />
-      <workItem from="1685726409860" duration="608000" />
+      <workItem from="1685726409860" duration="795000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1628598476902</created>
@@ -360,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685727014652</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="update">
+      <created>1685727083933</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685727083933</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -426,6 +436,10 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.cfg" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$USER_HOME$/YandexDisk/python/medoed/medoed" />
+      <path value="$PROJECT_DIR$/medoed" />
+    </ignored-roots>
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
